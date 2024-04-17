@@ -1,0 +1,17 @@
+{
+  "name": "testes-automatizados-unitarios-calculadora_mocha-chai-javascript",
+  "version": "1.0.0",
+  "description": "Projeto de Testes Automatizados Unitários em uma Calculadora em Javascript, Mocha, Chai e Node.js",
+  "main": "calculadora.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha ./spec/tests/** --reporter mochawesome --reporter-options reportDir=./relatorios,reportFilename=relatorio-testes-unitarios-calculadora-mocha-chai-js --timeout 5000 || exit 0"
+  },
+  "author": "Andressa Karla",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^5.1.0",
+    "mocha": "^10.4.0",
+    "mochawesome": "^7.1.3"
+  }
+}

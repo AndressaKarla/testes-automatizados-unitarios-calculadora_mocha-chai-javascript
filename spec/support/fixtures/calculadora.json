@@ -1,0 +1,14 @@
+{
+    "numeroInteiroPositivo": {
+        "neutro": 0,
+        "unidade": 1,
+        "dezena1": 10,
+        "dezena2": 99,
+        "centena1": 998,
+        "centena2": 999
+    },
+    "numeroInteiroNegativo": {
+        "unidade": -1,
+        "dezena": -99
+    }
+}

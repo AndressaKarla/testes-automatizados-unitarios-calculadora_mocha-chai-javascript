@@ -1,0 +1,40 @@
+name: Pipeline Testes Automatizados Unitários Calculadora Javascript
+# executa o workflow toda vez que for realizado um push ou pull-request no repositório
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # permite também executar esse workflow manualmente na aba "Actions" do GitHub
+  workflow_dispatch:
+
+jobs:
+  mocha-chai-js-teste-unitario:
+    # agente de execução/runner do tipo máquina virtual bem enxuta, sem interface gráfica
+    runs-on: ubuntu-latest
+    steps:
+      - name: Passo 1 - Obter cópia do código-fonte do repositório
+        uses: actions/checkout@v3
+
+      - name: Passo 2 - Instalar node versão 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Passo 3 - Instalar dependências do projeto
+        # forçar, mesmo tendo possíveis conflitos, a instalação das dependências do projeto do arquivo "package.json
+        run: npm install --force
+
+      - name: Passo 4 - Executar testes automatizados unitários diretamente no código-fonte e Gerar relatórios html e json
+        run: npm run test
+
+      - name: Passo 5 - Armazenar os resultados dos testes em relatórios html e json
+        uses: actions/upload-artifact@v3
+        # expressão condicional para que sempre seja executado independentemente dos resultados dos steps anteriores
+        if: ${{ always() }}
+        with:
+          name: mocha-chai-relatorios-html-json
+          path: ./relatorios
+          # armazena o relatório html por 30 dias
+          retention-days: 30
