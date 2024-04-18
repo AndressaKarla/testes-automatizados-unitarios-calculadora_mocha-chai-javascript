@@ -19,4 +19,13 @@ describe('Calculadora', () => {
             expect(resultadoObtido).to.equal(resultadoEsperado)
         })
     })
+
+    context('Subtrair', () => {
+        it('Validar subtração de número inteiro positivo de centena e número inteiro negativo de unidade', () => {
+            const resultadoObtido = calculadora.subtrair(calculadoraFixture.numeroInteiroPositivo.centena1, calculadoraFixture.numeroInteiroNegativo.unidade)
+            const resultadoEsperado = 999
+
+            expect(resultadoObtido).to.equal(resultadoEsperado)
+        })
+    })
 })
